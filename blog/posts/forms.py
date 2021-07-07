@@ -4,7 +4,9 @@ from .models import Post
 class PostForm(ModelForm):
     class Meta:
         model = Post
-        fields = '__all__'
+        fields = ['title', 'body', 'image']
+        # fields = '__all__'
+        # exclude= ('author', 'date_created')
         # widgets={
         #     "body": Textarea()
         # }

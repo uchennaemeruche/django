@@ -12,6 +12,14 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+
+project_folder =  Path(__file__).resolve().parent.parent
+
+print("Project folder:",project_folder)
+
+load_dotenv(os.path.join(project_folder, '.env')) 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,10 +29,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-iou3yb1y-gdl!lr+oz)(50-06^a0!e)2ianhue@c*8l3l_=_6w'
+# SECRET_KEY =  "django-insecure-iou3yb1y-gdl!lr+oz)(50-06^a0!e)2ianhue@c*8l3l_=_6w"
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-iou3yb1y-gdl!lr+oz)(50-06^a0!e)2ianhue@c*8l3l_=_6w')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG =  os.getenv('DJANGO_DEBUG', '') != 'False'
+
+print(SECRET_KEY)
+
 
 ALLOWED_HOSTS = []
 
@@ -119,6 +133,10 @@ USE_TZ = True
 # Uploaded images and files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# lOGIN/LOGOUT REDIRECT ROUTES
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
 
 # Static files (CSS, JavaScript, Images)

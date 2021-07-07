@@ -24,21 +24,27 @@
         <div class="col-md-10 col-lg-8 col-xl-7">
             {% for post in posts %}
             <div class="post-preview">
-                <img src="{{ post.image.url }}" alt="{{ post.image.url }}" style="max-with:600px; width:600px">
-                <a href="post.html">
+                {% if post.image %}
+                <img src="{{ post.image.url }}" alt="{{ post.image.url }}" style="max-width:600px; width:600px">
+                {% else %}
+                <img src="{% static 'website/bg.jpg' %}" alt="no image selected" style="max-width:600px; width:600px">
+                {% endif %}
+                <a href="posts/{{post.id}}">
                     <h2 class="post-title">{{post.title}}</h2>
                     <h3 class="post-subtitle">{{post.body}}</h3>
                 </a>
                 <p class="post-meta">
                     Posted by
-                    <a href="#!">Start Bootstrap</a>
-                    on September 24, 2021
+                    <a href="#!">{{post.author}}</a>
+                    {{post.date_created}}
                 </p>
             </div>
             <!-- Divider-->
             <hr class="my-4" />
             {% endfor%}
             <p>There are {{count}} available posts</p>
+            <p>Your ip address is : {{ip.address}} - {{ip.is_valid}}</p>
+
         </div>
     </div>
 </div>

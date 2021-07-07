@@ -17,13 +17,17 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from website.views import welcome
-from posts.views import create
+from django.urls.conf import include
+from website.views import welcome, signup
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', welcome),
-    path('post', create)
+    path('', welcome, name="home"),
+    path('posts/', include('posts.urls')),
+    path('accounts/',  include('django.contrib.auth.urls')),
+    # path('account/login',  login),
+    path('accounts/signup', signup, name="signup")
+
 
 ]
 
