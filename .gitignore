@@ -17,6 +17,9 @@ pyvenv.cfg
 .venv
 pip-selfcheck.json
 
+*GeoLite2-City_20210629
+GeoLite2-City_20210629
+
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
@@ -55,6 +58,10 @@ $RECYCLE.BIN/
 *.msix
 *.msm
 *.msp
+*.bak
+*.sqlite3
+.idea
+*.idea
 
 # Windows shortcuts
 *.lnk
