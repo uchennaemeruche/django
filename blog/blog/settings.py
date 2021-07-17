@@ -17,8 +17,6 @@ from dotenv import load_dotenv
 
 project_folder =  Path(__file__).resolve().parent.parent
 
-print("Project folder:",project_folder)
-
 load_dotenv(os.path.join(project_folder, '.env')) 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,10 +35,8 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-iou3yb1y-gdl!lr+oz)
 # DEBUG = True
 DEBUG =  os.getenv('DJANGO_DEBUG', '') != 'False'
 
-print(SECRET_KEY)
 
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.herokuapp.com','127.0.0.1','localhost']
 
 
 # Application definition
@@ -164,4 +160,4 @@ DATABASES['default'].update(db_from_env)
 
 #Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
